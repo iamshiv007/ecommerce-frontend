@@ -36,7 +36,7 @@ export const loadUser = () => async (dispatch) => {
     dispatch(userLoadStart())
     try {
         // Make API request for load user
-        const { data } = await axios.get(`http://localhost:5000/api/user/me`)
+        const { data } = await axios.get(`${port}/api/user/me`)
         dispatch(userLoadSuccess(data))
 
     } catch (error) {
