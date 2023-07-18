@@ -4,6 +4,7 @@ import { LogInSignUp } from './components/user/LogInSignUp';
 import { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { loadUser } from './featured/actions/userActions';
+import { Profile } from './components/user/Profile';
 
 function App() {
   const dispatch = useDispatch()
@@ -16,7 +17,8 @@ function App() {
     <Fragment>
       Home
       <Routes>
-        <Route element={<LogInSignUp />} path='/login' />
+        <Route exact element={<LogInSignUp />} path='/login' />
+        <Route exact element={<Profile />} path='/profile' />
       </Routes>
     </Fragment>
   );
