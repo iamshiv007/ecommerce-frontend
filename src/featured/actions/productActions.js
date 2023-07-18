@@ -6,11 +6,19 @@ import { newReviewFailed, newReviewRequest, newReviewSuccess } from "../slices/r
 const port = process.env.REACT_APP_BACKEND_URL
 
 // 1. Get All Products
-export const getAllProducts = () => async (dispatch) => {
+export const getAllProducts = (keyword = '', currentPage = 1, price = [0, 100000], category = "", ratings = 0) => async (dispatch) => {
     dispatch(allProductsRequest())
     try {
+
+        let link = `${port}/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}`
+
+        if (category) {
+            link = `${port}/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&category=${category}&ratings[gte]=${ratings}`
+        }
+
+
         // Make API request for load user
-        const { data } = await axios.get(`${port}/api/products`)
+        const { data } = await axios.get(link)
         dispatch(allProductsSuccess(data))
 
     } catch (error) {
