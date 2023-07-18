@@ -9,6 +9,7 @@ import { Home } from './components/home/Home';
 import { Footer } from './components/layout/footer/Footer';
 import { Header } from './components/layout/header/Header';
 import { ProductDetails } from './components/product/ProductDetails';
+import { Cart } from './components/cart/Cart';
 
 function App() {
   const dispatch = useDispatch()
@@ -25,6 +26,7 @@ function App() {
         <Route exact element={<LogInSignUp />} path='/login' />
         <Route exact element={<Profile />} path='/account' />
         <Route exact element={<ProductDetails />} path='/product/:id' />
+        <Route exact element={<Cart />} path='/cart' />
       </Routes>
 
       <Footer />

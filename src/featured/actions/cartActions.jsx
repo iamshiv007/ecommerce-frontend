@@ -3,6 +3,7 @@ import {
   addToCartFailed,
   addToCartRequest,
   addToCartSuccess,
+  removeToCartSuccess,
 } from "../slices/cartSlices";
 
 const PORT = process.env.REACT_APP_BACKEND_URL;
@@ -34,15 +35,12 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
   }
 };
 
-// // REMOVE FROM CART
-// export const removeItemsFromCart = (id) => async (dispatch, getState) => {
-//   dispatch({
-//     type: REMOVE_CART_ITEM,
-//     payload: id,
-//   });
+// REMOVE FROM CART
+export const removeToCart = (id) => async (dispatch, getState) => {
+  dispatch(removeToCartSuccess(id));
 
-//   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
-// };
+  localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
 
 // // SAVE SHIPPING INFO
 // export const saveShippingInfo = (data) => async (dispatch) => {

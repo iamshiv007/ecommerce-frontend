@@ -33,10 +33,14 @@ const cartSlice = createSlice({
       }
     },
     addToCartFailed: (state, action) => ({ ...state, error: action.payload }),
+    removeToCartSuccess: (state, action) => ({
+      ...state,
+      cartItems: state.cartItems.filter((i) => i.product !== action.payload),
+    }),
   },
 });
 
-export const { addToCartRequest, addToCartSuccess, addToCartFailed } =
+export const { addToCartRequest, addToCartSuccess, addToCartFailed, removeToCartSuccess } =
   cartSlice.actions;
 
 export default cartSlice.reducer;
