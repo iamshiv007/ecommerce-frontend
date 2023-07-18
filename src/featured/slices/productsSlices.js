@@ -14,7 +14,8 @@ const productsSlice = createSlice({
         allProductsSuccess: (state, action) => ({ ...state, loading: false, products: action.payload.products, resultPerPage: action.payload.resultPerPage, productsCount: action.payload.productsCount, filteredProductsCount: action.payload.filteredProductsCount }),
         adminProductsSuccess: (state, action) => ({ ...state, loading: false, products: action.payload.products }),
         AllProductsFailed: (state, action) => ({ ...state, loading: false, error: action.payload }),
-        adminProductsFailed: (state, action) => ({ ...state, loading: false, error: action.payload })
+        adminProductsFailed: (state, action) => ({ ...state, loading: false, error: action.payload }),
+        clear_errors: (state) => ({ ...state, error: null })
     }
 })
 
@@ -24,7 +25,8 @@ export const {
     allProductsSuccess,
     adminProductsSuccess,
     AllProductsFailed,
-    adminProductsFailed
+    adminProductsFailed,
+    clear_errors
 } = productsSlice.actions;
 
 export default productsSlice.reducer;

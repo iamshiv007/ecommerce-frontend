@@ -8,7 +8,7 @@ import './Home.css'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { clearErrors } from '../../featured/slices/userSlices'
-import { getAllProducts } from '../../featured/actions/productsActions'
+import { getAllProducts } from '../../featured/actions/productActions'
 
 export const Home = () => {
 

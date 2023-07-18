@@ -8,6 +8,7 @@ import { Profile } from './components/user/Profile';
 import { Home } from './components/home/Home';
 import { Footer } from './components/layout/footer/Footer';
 import { Header } from './components/layout/header/Header';
+import { ProductDetails } from './components/product/ProductDetails';
 
 function App() {
   const dispatch = useDispatch()
@@ -23,6 +24,7 @@ function App() {
         <Route exact element={<Home />} path='/' />
         <Route exact element={<LogInSignUp />} path='/login' />
         <Route exact element={<Profile />} path='/account' />
+        <Route exact element={<ProductDetails />} path='/product/:id' />
       </Routes>
 
       <Footer />
