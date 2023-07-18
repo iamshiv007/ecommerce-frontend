@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { loadUser } from './featured/actions/userActions';
 import { Profile } from './components/user/Profile';
 import { Home } from './components/home/Home';
+import { Footer } from './components/layout/footer/Footer';
+import { Header } from './components/layout/header/Header';
 
 function App() {
   const dispatch = useDispatch()
@@ -16,12 +18,14 @@ function App() {
 
   return (
     <Fragment>
-      {/* Home */}
+      <Header />
       <Routes>
         <Route exact element={<Home />} path='/' />
         <Route exact element={<LogInSignUp />} path='/login' />
-        <Route exact element={<Profile />} path='/profile' />
+        <Route exact element={<Profile />} path='/account' />
       </Routes>
+
+      <Footer />
     </Fragment>
   );
 }

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { loginFailed, loginStart, loginSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/userSlices";
+import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutRequest, logoutSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/userSlices";
 // import { allUsersFailed, allUsersRequest, allUsersSuccess } from "../slices/usersSlices";
 
 const port = process.env.REACT_APP_BACKEND_URL
@@ -42,6 +42,20 @@ export const loadUser = () => async (dispatch) => {
     } catch (error) {
         console.log(error.response?.data.message)
         dispatch(userLoadFailed(error.response?.data.message))
+    }
+}
+
+// 4. Logout
+export const logout = () => async (dispatch) => {
+    dispatch(logoutRequest())
+    try {
+        // Make API request for load user
+        const { data } = await axios.get(`${port}/api/user/logout`)
+        dispatch(logoutSuccess(data))
+
+    } catch (error) {
+        console.log(error.response?.data.message)
+        dispatch(logoutFailed(error.response?.data.message))
     }
 }
 

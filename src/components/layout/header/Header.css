@@ -1,0 +1,45 @@
+  /* UserOptions.js */
+  .userOptionsContainer{
+    z-index: 100;
+    position: fixed;
+    top:2%;
+    right:2%
+  }
+ 
+  /* Header.js */
+  .headerTop{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .headerLinkBox  a{
+    text-decoration:none;
+  }
+  
+  .headerLinkBox  a > div{
+    color:rgba(0, 0, 0, 0.5);
+    display:flex;
+    align-items: center;
+    font-size: 20px;
+    padding:20px;
+    padding-left:32px;
+    transition: all 0.2s;
+    font-family: 'Roboto';
+  }
+
+  .headerLinkBox  a > div:hover, .headerLinkBox  a > div:active{
+    color: tomato;
+    transform: scale(1.1);
+  }
+
+  .headerLinkBox  span{
+    padding-left:10px
+  }
+
+  @media screen and (max-width:600px){
+    .userOptionsContainer{
+      top:1%;
+      right:1%;
+    }
+  }
+  
