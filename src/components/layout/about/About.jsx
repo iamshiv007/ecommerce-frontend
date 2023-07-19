@@ -35,12 +35,14 @@ export const About = () => {
                 <a 
                 href="https://www.github.com/iamshiv007"
                 target='_blank'
+                rel="noreferrer"
                 >
                     <GitHub style={{fontSize:'40px'}} className='gitHubSvgIcon' />
                 </a>
                 <a 
                 href="https://www.instagram.com/iam_shiv_726"
                 target='_blank'
+                rel="noreferrer"
                 >
                     <Instagram style={{fontSize:'40px'}} className='instagramSvgIcon' />
                 </a>

@@ -1,6 +1,6 @@
 import axios from "axios"
 import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutRequest, logoutSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/userSlices";
-// import { allUsersFailed, allUsersRequest, allUsersSuccess } from "../slices/usersSlices";
+import { allUsersFailed, allUsersRequest, allUsersSuccess } from "../slices/usersSlice";
 
 const port = process.env.REACT_APP_BACKEND_URL
 
@@ -59,16 +59,15 @@ export const logout = () => async (dispatch) => {
     }
 }
 
-// 3. Get All Users
-// export const getAllUsers = () => async (dispatch) => {
-//     dispatch(allUsersRequest())
-//     try {
-//         // Make API request for load user
-//         const { data } = await axios.get(`http://localhost:5000/api/users`)
-//         dispatch(allUsersSuccess(data))
-
-//     } catch (error) {
-//         alert(error?.response?.data.message)
-//         dispatch(allUsersFailed(error?.response?.data.message))
-//     }
-// }
+// 5. Get All Users
+export const getAllUsers = () => async (dispatch) => {
+    dispatch(allUsersRequest())
+    try {
+        // Make API request for load user
+        const { data } = await axios.get(`${port}/api/admin/users`)
+        dispatch(allUsersSuccess(data))
+    } catch (error) {
+        alert(error?.response?.data.message)
+        dispatch(AllUsersFailed(error?.response?.data.message))
+    }
+}

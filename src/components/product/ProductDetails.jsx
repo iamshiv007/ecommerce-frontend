@@ -18,11 +18,11 @@ import {
   getProductDetails,
   newReview,
 } from "../../featured/actions/productActions";
-import { clear_errors } from "../../featured/slices/productSlices";
 import { clear_errors as review_clear_errors } from "../../featured/slices/reviewSlices";
 import { newReviewReset } from "../../featured/slices/reviewSlices";
 import { addToCart } from "../../featured/actions/cartActions";
 import "./ProductDetails.css";
+import { clear_errors } from "../../featured/slices/productDetailsSlices";
 
 export const ProductDetails = () => {
   const dispatch = useDispatch();

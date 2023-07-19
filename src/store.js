@@ -2,9 +2,11 @@ import { configureStore } from "@reduxjs/toolkit";
 import ThunkMiddleware from "redux-thunk";
 import userReducer from './featured/slices/userSlices'
 import productsSlices from "./featured/slices/productsSlices";
-import productSlices from "./featured/slices/productSlices";
 import ReviewSlices from "./featured/slices/reviewSlices";
 import cartSlices from "./featured/slices/cartSlices";
+import ordersSlice from "./featured/slices/ordersSlice";
+import usersSlice from "./featured/slices/usersSlice";
+import productDetailsSlices from "./featured/slices/productDetailsSlices";
 
 let preloadedState = {
     cart: {
@@ -20,10 +22,12 @@ let preloadedState = {
 export const store = configureStore({
     reducer: {
         user: userReducer,
+        users: usersSlice,
         products: productsSlices,
-        productDetails: productSlices,
+        productDetails: productDetailsSlices,
         review: ReviewSlices,
-        cart: cartSlices
+        cart: cartSlices,
+        orders: ordersSlice,
     },
     preloadedState,
     middleware: [ThunkMiddleware]

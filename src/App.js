@@ -11,6 +11,9 @@ import { Header } from './components/layout/header/Header';
 import { ProductDetails } from './components/product/ProductDetails';
 import { Cart } from './components/cart/Cart';
 import { Products } from './components/product/Products';
+import { Dashboard } from './components/Admin/Dashboard';
+import { About } from './components/layout/about/About';
+import { Contact } from './components/layout/contact/Contact';
 
 function App() {
   const dispatch = useDispatch()
@@ -29,8 +32,11 @@ function App() {
         <Route exact element={<ProductDetails />} path='/product/:id' />
         <Route exact element={<Cart />} path='/cart' />
         <Route exact element={<Products />} path='/products' />
+        <Route exact element={<Dashboard />} path='/dashboard' />
+        <Route exact element={<Dashboard />} path='/dashboard' />
+        <Route exact element={<About />} path='/about' />
+        <Route exact element={<Contact />} path='/contact' />
       </Routes>
-
       <Footer />
     </Fragment>
   );
