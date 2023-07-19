@@ -68,6 +68,6 @@ export const getAllUsers = () => async (dispatch) => {
         dispatch(allUsersSuccess(data))
     } catch (error) {
         alert(error?.response?.data.message)
-        dispatch(AllUsersFailed(error?.response?.data.message))
+        dispatch(allUsersFailed(error?.response?.data.message))
     }
 }
