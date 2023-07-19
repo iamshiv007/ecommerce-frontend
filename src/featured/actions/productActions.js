@@ -3,6 +3,7 @@ import { AllProductsFailed, adminProductsFailed, adminProductsRequest, adminProd
 import { newReviewFailed, newReviewRequest, newReviewSuccess } from "../slices/reviewSlices"
 import { productDetailsFailed, productDetailsRequest, productDetailsSuccess } from "../slices/productDetailsSlices"
 import { newProductFailed, newProductRequest, newProductSuccess } from "../slices/NewProductSlice"
+import { deleteProductFailed, deleteProductRequest, deleteProductSuccess } from "../slices/DeleteProductSlice"
 
 const port = process.env.REACT_APP_BACKEND_URL
 
@@ -82,6 +83,22 @@ export const newProduct = (productData) => async (dispatch) => {
 
     } catch (error) {
         dispatch(newProductFailed())
+        console.log(error)
+    }
+}
+
+// 6. Create New Product
+export const deleteProduct = (id) => async (dispatch) => {
+    dispatch(deleteProductRequest())
+
+    try {
+
+        const { data } = await axios.delete(`${port}/api/admin/product/${id}`)
+
+        dispatch(deleteProductSuccess(data))
+
+    } catch (error) {
+        dispatch(deleteProductFailed())
         console.log(error)
     }
 }

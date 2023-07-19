@@ -17,7 +17,6 @@ import { newProduct } from "../../featured/actions/productActions";
 import {
   clear_errors,
   newProductReset,
-  new_product_reset,
 } from "../../featured/slices/NewProductSlice";
 
 export const NewProduct = () => {

@@ -15,6 +15,7 @@ import { Dashboard } from './components/Admin/Dashboard';
 import { About } from './components/layout/about/About';
 import { Contact } from './components/layout/contact/Contact';
 import { NewProduct } from './components/Admin/NewProduct';
+import { ProductList } from './components/Admin/ProductList';
 
 function App() {
   const dispatch = useDispatch()
@@ -38,6 +39,7 @@ function App() {
         <Route exact element={<About />} path='/about' />
         <Route exact element={<Contact />} path='/contact' />
         <Route exact element={<NewProduct />} path='/admin/product' />
+        <Route exact element={<ProductList />} path='/admin/products' />
       </Routes>
       <Footer />
     </Fragment>
