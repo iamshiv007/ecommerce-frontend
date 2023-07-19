@@ -1,9 +1,10 @@
 import axios from "axios"
 import { AllProductsFailed, adminProductsFailed, adminProductsRequest, adminProductsSuccess, allProductsRequest, allProductsSuccess } from "../slices/productsSlices"
-import { newReviewFailed, newReviewRequest, newReviewSuccess } from "../slices/reviewSlices"
+import { deleteReviewFailed, deleteReviewRequest, deleteReviewSuccess, newReviewFailed, newReviewRequest, newReviewSuccess } from "../slices/reviewSlices"
 import { productDetailsFailed, productDetailsRequest, productDetailsSuccess } from "../slices/productDetailsSlices"
 import { newProductFailed, newProductRequest, newProductSuccess } from "../slices/NewProductSlice"
 import { deleteProductFailed, deleteProductRequest, deleteProductSuccess } from "../slices/DeleteProductSlice"
+import { allReviewsFailed, allReviewsRequest, allReviewsSuccess } from "../slices/reviewsSlice"
 
 const port = process.env.REACT_APP_BACKEND_URL
 
@@ -28,7 +29,6 @@ export const getAllProducts = (keyword = '', currentPage = 1, price = [0, 100000
         dispatch(AllProductsFailed(error?.response?.data.message))
     }
 }
-
 // 2. Get All Products -- Admin
 export const getAdminProducts = () => async (dispatch) => {
     dispatch(adminProductsRequest())
@@ -89,6 +89,7 @@ export const newProduct = (productData) => async (dispatch) => {
 
 // 6. Create New Product
 export const deleteProduct = (id) => async (dispatch) => {
+
     dispatch(deleteProductRequest())
 
     try {
@@ -100,5 +101,37 @@ export const deleteProduct = (id) => async (dispatch) => {
     } catch (error) {
         dispatch(deleteProductFailed())
         console.log(error)
+    }
+}
+
+// 7. Get Product's All Reviews
+export const getAllReviews = (id) => async (dispatch) => {
+    dispatch(allReviewsRequest())
+    try {
+        // Make API request for load user
+        const { data } = await axios.get(`${port}/api/reviews?id=${id}`)
+        dispatch(allReviewsSuccess(data))
+    } catch (error) {
+        alert(error?.response?.data.message)
+        dispatch(allReviewsFailed(error?.response?.data.message))
+    }
+}
+
+// 8. Delete Product's review
+export const deleteReview = (reviewId, productId) => async (dispatch) => {
+
+    dispatch(deleteReviewRequest())
+
+    try {
+
+        const { data } = await axios.delete(`${port}/api/review?productId=${productId}&id=${reviewId}`)
+
+        dispatch(deleteReviewSuccess(data))
+
+    } catch (error) {
+
+        dispatch(deleteReviewFailed())
+        console.log(error)
+
     }
 }
