@@ -63,10 +63,12 @@ export const UpdateProduct = () => {
   const [oldImages, setOldImages] = useState([]);
 
   useEffect(() => {
-    console.log("hello", product === {});
     if (!product || product === {}) {
       dispatch(getProductDetails(id));
-    } else {
+    } else if(product && product._id !== id){
+      dispatch(getProductDetails(id));
+    }
+     else {
       setName(product?.name || "");
       setPrice(product?.price || 0);
       setDescription(product?.description || "");
@@ -91,6 +93,7 @@ export const UpdateProduct = () => {
       dispatch(productDetailsReset());
       dispatch(updateProductReset());
     }
+    // eslint-disable-next-line
   }, [dispatch, error, productUpdated, product, updateError]);
 
   const updateProductSubmitHandler = (e) => {

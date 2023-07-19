@@ -17,6 +17,7 @@ export const Dashboard = () => {
   const { orders } = useSelector((state) => state.orders);
   const { users } = useSelector((state) => state.users);
 
+  // eslint-disable-next-line
   let outOfStock = 0;
 
   products &&

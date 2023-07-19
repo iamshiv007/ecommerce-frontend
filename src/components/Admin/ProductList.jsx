@@ -20,7 +20,7 @@ import {
   deleteProductReset,
 } from "../../featured/slices/DeleteProductSlice";
 
-export const ProductList = ({}) => {
+export const ProductList = () => {
   const dispatch = useDispatch();
 
   const { error, products } = useSelector((state) => state.products);
