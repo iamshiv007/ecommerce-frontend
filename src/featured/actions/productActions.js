@@ -5,6 +5,7 @@ import { productDetailsFailed, productDetailsRequest, productDetailsSuccess } fr
 import { newProductFailed, newProductRequest, newProductSuccess } from "../slices/NewProductSlice"
 import { deleteProductFailed, deleteProductRequest, deleteProductSuccess } from "../slices/DeleteProductSlice"
 import { allReviewsFailed, allReviewsRequest, allReviewsSuccess } from "../slices/reviewsSlice"
+import { updateProductFailed, updateProductRequest, updateProductSuccess } from "../slices/UpdateProductSlice"
 
 const port = process.env.REACT_APP_BACKEND_URL
 
@@ -83,6 +84,22 @@ export const newProduct = (productData) => async (dispatch) => {
 
     } catch (error) {
         dispatch(newProductFailed())
+        console.log(error)
+    }
+}
+
+// 5. Update Product
+export const updateProduct = (id, productData) => async (dispatch) => {
+    dispatch(updateProductRequest())
+
+    try {
+
+        const { data } = await axios.put(`${port}/api/admin/product/${id}`, productData)
+
+        dispatch(updateProductSuccess(data))
+
+    } catch (error) {
+        dispatch(updateProductFailed())
         console.log(error)
     }
 }

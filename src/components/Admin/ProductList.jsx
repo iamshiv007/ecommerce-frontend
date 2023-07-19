@@ -85,7 +85,6 @@ export const ProductList = ({}) => {
       sortable: false,
       type: "number",
       renderCell: (params) => {
-        console.log(params.id);
         return (
           <Fragment>
             <div style={{ display: "flex", alignItems: "center" }}>

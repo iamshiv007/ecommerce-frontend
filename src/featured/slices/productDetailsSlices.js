@@ -19,6 +19,10 @@ const productDetailsSlice = createSlice({
       loading: false,
       error: action.payload,
     }),
+    productDetailsReset: (state, action) => ({
+      ...state,
+      product: null
+    }),
     clear_errors: (state) => ({
       ...state,
       error: null,
@@ -30,6 +34,7 @@ export const {
   productDetailsRequest,
   productDetailsSuccess,
   productDetailsFailed,
+  productDetailsReset,
   clear_errors,
 } = productDetailsSlice.actions;
 

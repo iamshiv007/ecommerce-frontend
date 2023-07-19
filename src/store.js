@@ -10,6 +10,7 @@ import productDetailsSlices from "./featured/slices/productDetailsSlices";
 import NewProductSlice from "./featured/slices/NewProductSlice";
 import deleteProductSlice from "./featured/slices/DeleteProductSlice";
 import ReviewsSlice from "./featured/slices/reviewsSlice";
+import UpdateProductSlice from "./featured/slices/UpdateProductSlice";
 
 let preloadedState = {
     cart: {
@@ -33,7 +34,8 @@ export const store = configureStore({
         orders: ordersSlice,
         newProduct: NewProductSlice,
         deleteProduct: deleteProductSlice,
-        productReviews: ReviewsSlice
+        productReviews: ReviewsSlice,
+        updateProduct:UpdateProductSlice
     },
     preloadedState,
     middleware: [ThunkMiddleware]
