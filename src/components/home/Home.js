@@ -17,7 +17,7 @@ export const Home = () => {
 
     const { error, products, loading } = useSelector(state => state.products)
 
-    const { error: userError, user } = useSelector(state => state.user)
+    const { isAuthenticated } = useSelector(state => state.auth)
 
     useEffect(() => {
 
@@ -27,12 +27,12 @@ export const Home = () => {
         }
         dispatch(getAllProducts())
 
-        if (userError && !user) {
+        if (!isAuthenticated) {
             alert("PLease login to access all resources")
         }
 
         // eslint-disable-next-line
-    }, [dispatch, error, userError]);
+    }, [dispatch, isAuthenticated]);
 
     return (
         <Fragment>
@@ -41,7 +41,7 @@ export const Home = () => {
             ) : (
                 <Fragment>
                     {
-                        userError || user === null ?
+                        !isAuthenticated ?
                             <Link to='/login'>
                                 <Button
                                     variant="contained"

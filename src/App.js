@@ -27,6 +27,9 @@ import { ConfirmOrder } from './components/cart/ConfirmOrder';
 import PaymentWrapper from './components/cart/PaymentWrapper';
 import { UserOptions } from './components/layout/header/UserOptions';
 import { OrderSuccess } from './components/cart/OrderSuccess';
+import ProtectedRoute from './components/route/ProtectedRoute';
+import { MyOrders } from './components/order/MyOrders';
+import { OrderDetails } from './components/order/OrderDetails';
 
 function App() {
   const dispatch = useDispatch()
@@ -43,27 +46,34 @@ function App() {
       {isAuthenticated && user.role === 'Admin' && <UserOptions />}
 
       <Routes>
-        <Route exact element={<PaymentWrapper />} path='/process/payment' />
+
         <Route exact element={<Home />} path='/' />
-        <Route exact element={<LogInSignUp />} path='/login' />
-        <Route exact element={<Profile />} path='/account' />
-        <Route exact element={<ProductDetails />} path='/product/:id' />
-        <Route exact element={<Cart />} path='/cart' />
         <Route exact element={<Products />} path='/products' />
-        <Route exact element={<Dashboard />} path='/admin/dashboard' />
+        <Route exact element={<ProductDetails />} path='/product/:id' />
+        <Route exact element={<Products />} path='/products/:keyword' />
+        <Route exact element={<Cart />} path='/cart' />
         <Route exact element={<About />} path='/about' />
         <Route exact element={<Contact />} path='/contact' />
-        <Route exact element={<NewProduct />} path='/admin/product' />
-        <Route exact element={<ProductList />} path='/admin/products' />
-        <Route exact element={<ProductReviews />} path='/admin/reviews' />
-        <Route exact element={<UpdateProduct />} path='/admin/product/:id' />
-        <Route exact element={<UpdateUser />} path='/admin/user/:id' />
-        <Route exact element={<UserList />} path='/admin/users' />
         <Route exact element={<Search />} path='/search' />
-        <Route exact element={<Products />} path='/products/:keyword' />
-        <Route exact element={<Shipping />} path='/shipping' />
-        <Route exact element={<ConfirmOrder />} path='/order/confirm' />
-        <Route exact element={<OrderSuccess />} path='/success' />
+
+        <ProtectedRoute exact element={<LogInSignUp />} path='/login' />
+        <ProtectedRoute exact element={<Profile />} path='/account' />
+        <ProtectedRoute exact element={<Shipping />} path='/shipping' />
+        <ProtectedRoute exact element={<ConfirmOrder />} path='/order/confirm' />
+        <ProtectedRoute exact element={<OrderSuccess />} path='/success' />
+        <ProtectedRoute exact element={<MyOrders />} path='/orders' />
+        <ProtectedRoute exact element={<OrderDetails />} path='/order/:id' />
+
+        <ProtectedRoute isAdmin={true} exact element={<Dashboard />} path='/admin/dashboard' />
+        <ProtectedRoute isAdmin={true} exact element={<NewProduct />} path='/admin/product' />
+        <ProtectedRoute isAdmin={true} exact element={<ProductList />} path='/admin/products' />
+        <ProtectedRoute isAdmin={true} exact element={<ProductReviews />} path='/admin/reviews' />
+        <ProtectedRoute isAdmin={true} exact element={<UpdateProduct />} path='/admin/product/:id' />
+        <ProtectedRoute isAdmin={true} exact element={<UpdateUser />} path='/admin/user/:id' />
+        <ProtectedRoute isAdmin={true} exact element={<UserList />} path='/admin/users' />
+
+        <ProtectedRoute exact element={<PaymentWrapper />} path='/process/payment' />
+
         <Route element={<NotFound />} path='*' />
       </Routes>
       <Footer />

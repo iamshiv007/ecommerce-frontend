@@ -1,6 +1,7 @@
 import axios from "axios"
-import { AllOrdersFailed, allOrdersRequest, allOrdersSuccess } from "../slices/ordersSlice"
+import { AllOrdersFailed, allOrdersRequest, allOrdersSuccess, myOrdersFailed, myOrdersRequest, myOrdersSuccess } from "../slices/ordersSlice"
 import { deleteOrderFailed, deleteOrderRequest, deleteOrderSuccess, newOrderFailed, newOrderRequest, newOrderSuccess, updateOrderFailed, updateOrderRequest, updateOrderSuccess } from "../slices/orderSlice"
+import { orderDetailsFailed, orderDetailsRequest, orderDetailsSuccess } from "../slices/orderDetailsSlice"
 
 const port = process.env.REACT_APP_BACKEND_URL
 
@@ -18,7 +19,21 @@ export const getAllOrders = () => async (dispatch) => {
     }
 }
 
-// 2. Create New Order
+// 2. Get All Orders
+export const getMyOrders = () => async (dispatch) => {
+    dispatch(myOrdersRequest())
+    try {
+        // Make API request for load user
+        const { data } = await axios.get(`${port}/api/orders/me`)
+        dispatch(myOrdersSuccess(data))
+
+    } catch (error) {
+        alert(error?.response?.data.message)
+        dispatch(myOrdersFailed(error?.response?.data.message))
+    }
+}
+
+// 3. Create New Order
 export const newOrder = (orderData) => async (dispatch) => {
     dispatch(newOrderRequest())
 
@@ -34,7 +49,7 @@ export const newOrder = (orderData) => async (dispatch) => {
     }
 }
 
-// 3. Update Product
+// 4. Update Product
 export const updateOrder = (id, orderData) => async (dispatch) => {
     dispatch(updateOrderRequest())
 
@@ -50,7 +65,7 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
     }
 }
 
-// 4. Create New Product
+// 5. Create New Product
 export const deleteOrder = (id) => async (dispatch) => {
 
     dispatch(deleteOrderRequest())
@@ -64,5 +79,19 @@ export const deleteOrder = (id) => async (dispatch) => {
     } catch (error) {
         dispatch(deleteOrderFailed())
         console.log(error)
+    }
+}
+
+// 3. Get Order Details
+export const getOrderDetails = (id) => async (dispatch) => {
+    dispatch(orderDetailsRequest())
+    try {
+        // Make API request for load user
+        const { data } = await axios.get(`${port}/api/order/${id}`)
+        dispatch(orderDetailsSuccess(data))
+
+    } catch (error) {
+        alert(error?.response?.data.message)
+        dispatch(orderDetailsFailed(error?.response?.data.message))
     }
 }
