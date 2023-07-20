@@ -11,6 +11,7 @@ import getUserSlice from "./featured/slices/getUserSlice";
 import ProductSlice from "./featured/slices/productSlice";
 import authSlices from "./featured/slices/authSlice";
 import userSlice from "./featured/slices/userSlice";
+import orderSlice from "./featured/slices/orderSlice";
 
 let preloadedState = {
     cart: {
@@ -35,7 +36,8 @@ export const store = configureStore({
         product: ProductSlice,
         productReviews: ReviewsSlice,
         getUser: getUserSlice,
-        user: userSlice
+        user: userSlice,
+        order: orderSlice
     },
     preloadedState,
     middleware: [ThunkMiddleware]

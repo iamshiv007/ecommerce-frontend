@@ -86,7 +86,7 @@ export const newProduct = (productData) => async (dispatch) => {
     }
 }
 
-// 5. Update Product
+// 6. Update Product
 export const updateProduct = (id, productData) => async (dispatch) => {
     dispatch(updateProductRequest())
 
@@ -102,7 +102,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     }
 }
 
-// 6. Create New Product
+// 7. Create New Product
 export const deleteProduct = (id) => async (dispatch) => {
 
     dispatch(deleteProductRequest())
@@ -119,7 +119,7 @@ export const deleteProduct = (id) => async (dispatch) => {
     }
 }
 
-// 7. Get Product's All Reviews
+// 8. Get Product's All Reviews
 export const getAllReviews = (id) => async (dispatch) => {
     dispatch(allReviewsRequest())
     try {
@@ -132,7 +132,7 @@ export const getAllReviews = (id) => async (dispatch) => {
     }
 }
 
-// 8. Delete Product's review
+// 9. Delete Product's review
 export const deleteReview = (reviewId, productId) => async (dispatch) => {
 
     dispatch(deleteReviewRequest())

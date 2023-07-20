@@ -24,6 +24,7 @@ import { NotFound } from './components/layout/not-found/NotFound';
 import { Search } from './components/product/Search';
 import { Shipping } from './components/cart/Shipping';
 import { ConfirmOrder } from './components/cart/ConfirmOrder';
+import PaymentWrapper from './components/cart/PaymentWrapper';
 
 function App() {
   const dispatch = useDispatch()
@@ -36,6 +37,7 @@ function App() {
     <Fragment>
       <Header />
       <Routes>
+        <Route exact element={<PaymentWrapper />} path='/process/payment' />
         <Route exact element={<Home />} path='/' />
         <Route exact element={<LogInSignUp />} path='/login' />
         <Route exact element={<Profile />} path='/account' />
