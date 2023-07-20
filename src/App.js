@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { LogInSignUp } from './components/user/LogInSignUp';
 import { Fragment, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from './featured/actions/userActions';
 import { Profile } from './components/user/Profile';
 import { Home } from './components/home/Home';
@@ -25,9 +25,12 @@ import { Search } from './components/product/Search';
 import { Shipping } from './components/cart/Shipping';
 import { ConfirmOrder } from './components/cart/ConfirmOrder';
 import PaymentWrapper from './components/cart/PaymentWrapper';
+import { UserOptions } from './components/layout/header/UserOptions';
+import { OrderSuccess } from './components/cart/OrderSuccess';
 
 function App() {
   const dispatch = useDispatch()
+  const { isAuthenticated, user } = useSelector((state) => state.auth)
 
   useEffect(() => {
     dispatch(loadUser())
@@ -36,6 +39,9 @@ function App() {
   return (
     <Fragment>
       <Header />
+
+      {isAuthenticated && user.role === 'Admin' && <UserOptions />}
+
       <Routes>
         <Route exact element={<PaymentWrapper />} path='/process/payment' />
         <Route exact element={<Home />} path='/' />
@@ -57,6 +63,7 @@ function App() {
         <Route exact element={<Products />} path='/products/:keyword' />
         <Route exact element={<Shipping />} path='/shipping' />
         <Route exact element={<ConfirmOrder />} path='/order/confirm' />
+        <Route exact element={<OrderSuccess />} path='/success' />
         <Route element={<NotFound />} path='*' />
       </Routes>
       <Footer />
