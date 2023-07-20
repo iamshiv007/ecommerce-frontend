@@ -3,13 +3,14 @@ import "./LogInSignUp.css";
 import { Loader } from "../layout/loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Face, LockOpen, MailOutline } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { login, register } from "../../featured/actions/userActions";
 import { clearErrors } from "../../featured/slices/authSlice";
 
 export const LogInSignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.auth
@@ -47,7 +48,7 @@ export const LogInSignUp = () => {
     }
   };
 
-  // const redirect = location.search ? location.search.split("=")[1] : "/";
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
     if (error && error !== "Please login to access this resource") {
@@ -55,9 +56,9 @@ export const LogInSignUp = () => {
       dispatch(clearErrors());
     }
     if (isAuthenticated) {
-      navigate("/");
+      navigate(redirect);
     }
-  }, [dispatch, error, isAuthenticated, navigate]);
+  }, [dispatch, error, isAuthenticated, navigate, redirect]);
 
   const loginSubmit = (e) => {
     e.preventDefault();

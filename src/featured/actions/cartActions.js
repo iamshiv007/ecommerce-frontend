@@ -4,6 +4,7 @@ import {
   addToCartRequest,
   addToCartSuccess,
   removeToCartSuccess,
+  saveShippingInfoSuccess,
 } from "../slices/cartSlice";
 
 const PORT = process.env.REACT_APP_BACKEND_URL;
@@ -42,12 +43,9 @@ export const removeToCart = (id) => async (dispatch, getState) => {
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 
-// // SAVE SHIPPING INFO
-// export const saveShippingInfo = (data) => async (dispatch) => {
-//   dispatch({
-//     type: SAVE_SHIPPING_INFO,
-//     payload: data,
-//   });
+// SAVE SHIPPING INFO
+export const saveShippingInfo = (data) => async (dispatch) => {
+  dispatch(saveShippingInfoSuccess(data));
 
-//   localStorage.setItem("shippingInfo", JSON.stringify(data));
-// };
+  localStorage.setItem("shippingInfo", JSON.stringify(data));
+};

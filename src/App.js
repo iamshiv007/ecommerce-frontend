@@ -22,6 +22,8 @@ import { UpdateUser } from './components/Admin/UpdateUser';
 import { UserList } from './components/Admin/UserList';
 import { NotFound } from './components/layout/not-found/NotFound';
 import { Search } from './components/product/Search';
+import { Shipping } from './components/cart/Shipping';
+import { ConfirmOrder } from './components/cart/ConfirmOrder';
 
 function App() {
   const dispatch = useDispatch()
@@ -51,6 +53,8 @@ function App() {
         <Route exact element={<UserList />} path='/admin/users' />
         <Route exact element={<Search />} path='/search' />
         <Route exact element={<Products />} path='/products/:keyword' />
+        <Route exact element={<Shipping />} path='/shipping' />
+        <Route exact element={<ConfirmOrder />} path='/order/confirm' />
         <Route element={<NotFound />} path='*' />
       </Routes>
       <Footer />
