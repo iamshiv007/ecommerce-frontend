@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import {
   clear_errors,
   deleteReviewReset,
-} from "../../featured/slices/reviewSlices";
+} from "../../featured/slices/reviewSlice";
 import { clear_errors as reviewsClearError } from "../../featured/slices/reviewsSlice";
 import {
   deleteReview,

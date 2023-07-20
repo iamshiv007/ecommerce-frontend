@@ -1,11 +1,9 @@
 import axios from "axios"
-import { AllProductsFailed, adminProductsFailed, adminProductsRequest, adminProductsSuccess, allProductsRequest, allProductsSuccess } from "../slices/productsSlices"
-import { deleteReviewFailed, deleteReviewRequest, deleteReviewSuccess, newReviewFailed, newReviewRequest, newReviewSuccess } from "../slices/reviewSlices"
-import { productDetailsFailed, productDetailsRequest, productDetailsSuccess } from "../slices/productDetailsSlices"
-import { newProductFailed, newProductRequest, newProductSuccess } from "../slices/NewProductSlice"
-import { deleteProductFailed, deleteProductRequest, deleteProductSuccess } from "../slices/DeleteProductSlice"
+import { AllProductsFailed, adminProductsFailed, adminProductsRequest, adminProductsSuccess, allProductsRequest, allProductsSuccess } from "../slices/productsSlice"
+import { deleteReviewFailed, deleteReviewRequest, deleteReviewSuccess, newReviewFailed, newReviewRequest, newReviewSuccess } from "../slices/reviewSlice"
+import { productDetailsFailed, productDetailsRequest, productDetailsSuccess } from "../slices/productDetailsSlice"
+import { deleteProductFailed, deleteProductRequest, deleteProductSuccess, updateProductFailed, updateProductRequest, updateProductSuccess, newProductFailed, newProductRequest, newProductSuccess } from "../slices/productSlice"
 import { allReviewsFailed, allReviewsRequest, allReviewsSuccess } from "../slices/reviewsSlice"
-import { updateProductFailed, updateProductRequest, updateProductSuccess } from "../slices/UpdateProductSlice"
 
 const port = process.env.REACT_APP_BACKEND_URL
 

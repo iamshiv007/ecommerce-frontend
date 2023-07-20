@@ -7,7 +7,7 @@ import "./Profile.css";
 import profile from "../../images/Profile.png";
 
 export const Profile = () => {
-  const { loading, user } = useSelector((state) => state.user);
+  const { loading, user } = useSelector((state) => state.auth);
 
   function isValidImageUrl(url) {
     // Regular expression to match image file extensions

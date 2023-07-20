@@ -1,8 +1,7 @@
 import axios from "axios"
-import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutRequest, logoutSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/userSlices";
+import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutRequest, logoutSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/authSlice";
 import { allUsersFailed, allUsersRequest, allUsersSuccess } from "../slices/usersSlice";
-import { updateUserFailed, updateUserRequest, updateUserSuccess } from "../slices/UpdateUserSlice";
-import { deleteUserFailed, deleteUserRequest, deleteUserSuccess } from "../slices/deleteUserSlice";
+import { updateUserFailed, updateUserRequest, updateUserSuccess, deleteUserFailed, deleteUserRequest, deleteUserSuccess } from "../slices/userSlice";
 import { getUserFailed, getUserRequest, getUserSuccess } from "../slices/getUserSlice";
 
 const port = process.env.REACT_APP_BACKEND_URL

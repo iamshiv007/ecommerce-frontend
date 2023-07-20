@@ -12,7 +12,7 @@ import { clear_errors } from "../../featured/slices/usersSlice";
 import {
   clear_errors as deleteUserClearErrors,
   deleteUserReset,
-} from "../../featured/slices/deleteUserSlice";
+} from "../../featured/slices/userSlice";
 
 export const UserList = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const UserList = () => {
   const { error, users } = useSelector((state) => state.users);
 
   const { error: deleteError, userDeleted } = useSelector(
-    (state) => state.deleteUser
+    (state) => state.user
   );
 
   const deleteUserHandler = (id) => {

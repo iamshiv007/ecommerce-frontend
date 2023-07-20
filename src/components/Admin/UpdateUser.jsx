@@ -9,9 +9,9 @@ import "./Dashboard.css";
 import "./NewProduct.css";
 import { getUser, updateUser } from "../../featured/actions/userActions";
 import {
-  clear_errors as updateUserClearErrors,
+  clear_errors,
   updateUserReset,
-} from "../../featured/slices/UpdateUserSlice";
+} from "../../featured/slices/userSlice";
 import { Button } from "@mui/material";
 import { getUserClearErrors, getUserReset } from "../../featured/slices/getUserSlice";
 
@@ -27,7 +27,7 @@ export const UpdateUser = () => {
     loading: updateLoading,
     error: updateError,
     userUpdated,
-  } = useSelector((state) => state.updateUser);
+  } = useSelector((state) => state.user);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -62,7 +62,7 @@ export const UpdateUser = () => {
 
     if (updateError) {
       alert(updateError);
-      dispatch(updateUserClearErrors());
+      dispatch(clear_errors());
     }
 
     if (userUpdated) {

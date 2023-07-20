@@ -8,7 +8,7 @@ import { ProductCard } from "../home/ProductCard";
 import { useParams } from "react-router-dom";
 import { Pagination, Slider, Typography } from "@mui/material";
 import { getAllProducts } from "../../featured/actions/productActions";
-import { clear_errors } from "../../featured/slices/productsSlices";
+import { clear_errors } from "../../featured/slices/productsSlice";
 
 const categories = [
   "Laptop",

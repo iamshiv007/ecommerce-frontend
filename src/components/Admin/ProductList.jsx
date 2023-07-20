@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { MetaData } from "../layout/MetaData";
 import { Sidebar } from "./Sidebar";
 import { DataGrid } from "@mui/x-data-grid";
-// import { clearErrors, deleteProduct, getAdminProduct } from '../../actions/productAction'
-// import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 import { Delete, Edit } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -14,11 +12,11 @@ import {
   deleteProduct,
   getAdminProducts,
 } from "../../featured/actions/productActions";
-import { clear_errors } from "../../featured/slices/NewProductSlice";
 import {
   clear_errors as delete_clear_errors,
   deleteProductReset,
-} from "../../featured/slices/DeleteProductSlice";
+} from "../../featured/slices/productSlice";
+import { clear_errors } from "../../featured/slices/productsSlice";
 
 export const ProductList = () => {
   const dispatch = useDispatch();
@@ -29,7 +27,7 @@ export const ProductList = () => {
     error: deleteError,
     productDeleted,
     loading,
-  } = useSelector((state) => state.deleteProduct);
+  } = useSelector((state) => state.product);
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));

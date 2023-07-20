@@ -1,19 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import ThunkMiddleware from "redux-thunk";
-import userReducer from './featured/slices/userSlices'
-import productsSlices from "./featured/slices/productsSlices";
-import ReviewSlices from "./featured/slices/reviewSlices";
-import cartSlices from "./featured/slices/cartSlices";
+import productsSlices from "./featured/slices/productsSlice";
+import ReviewSlices from "./featured/slices/reviewSlice";
+import cartSlices from "./featured/slices/cartSlice";
 import ordersSlice from "./featured/slices/ordersSlice";
 import usersSlice from "./featured/slices/usersSlice";
-import productDetailsSlices from "./featured/slices/productDetailsSlices";
-import NewProductSlice from "./featured/slices/NewProductSlice";
-import deleteProductSlice from "./featured/slices/DeleteProductSlice";
+import productDetailsSlices from "./featured/slices/productDetailsSlice";
 import ReviewsSlice from "./featured/slices/reviewsSlice";
-import UpdateProductSlice from "./featured/slices/UpdateProductSlice";
-import updateUserSlice from "./featured/slices/UpdateUserSlice";
-import deleteUserSlice from "./featured/slices/deleteUserSlice";
 import getUserSlice from "./featured/slices/getUserSlice";
+import ProductSlice from "./featured/slices/productSlice";
+import authSlices from "./featured/slices/authSlice";
+import userSlice from "./featured/slices/userSlice";
 
 let preloadedState = {
     cart: {
@@ -28,20 +25,17 @@ let preloadedState = {
 
 export const store = configureStore({
     reducer: {
-        user: userReducer,
+        auth: authSlices,
         users: usersSlice,
         products: productsSlices,
         productDetails: productDetailsSlices,
         review: ReviewSlices,
         cart: cartSlices,
         orders: ordersSlice,
-        newProduct: NewProductSlice,
-        deleteProduct: deleteProductSlice,
+        product: ProductSlice,
         productReviews: ReviewsSlice,
-        updateProduct: UpdateProductSlice,
-        updateUser: updateUserSlice,
-        deleteUser: deleteUserSlice,
-        getUser: getUserSlice
+        getUser: getUserSlice,
+        user: userSlice
     },
     preloadedState,
     middleware: [ThunkMiddleware]

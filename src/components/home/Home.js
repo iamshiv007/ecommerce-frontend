@@ -7,7 +7,7 @@ import { MetaData } from '../layout/MetaData'
 import './Home.css'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { clearErrors } from '../../featured/slices/userSlices'
+import { clearErrors } from '../../featured/slices/authSlice'
 import { getAllProducts } from '../../featured/actions/productActions'
 
 export const Home = () => {

@@ -4,7 +4,7 @@ import {
   addToCartRequest,
   addToCartSuccess,
   removeToCartSuccess,
-} from "../slices/cartSlices";
+} from "../slices/cartSlice";
 
 const PORT = process.env.REACT_APP_BACKEND_URL;
 

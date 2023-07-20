@@ -5,14 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Face, LockOpen, MailOutline } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { login, register } from "../../featured/actions/userActions";
-import { clearErrors } from "../../featured/slices/userSlices";
+import { clearErrors } from "../../featured/slices/authSlice";
 
-export const LogInSignUp = ({ location }) => {
+export const LogInSignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { error, loading, isAuthenticated } = useSelector(
-    (state) => state.user
+    (state) => state.auth
   );
 
   const loginTab = useRef(null);

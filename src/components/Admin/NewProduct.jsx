@@ -17,7 +17,7 @@ import { newProduct } from "../../featured/actions/productActions";
 import {
   clear_errors,
   newProductReset,
-} from "../../featured/slices/NewProductSlice";
+} from "../../featured/slices/productSlice";
 
 export const NewProduct = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ export const NewProduct = () => {
   ];
 
   const { loading, error, productCreated } = useSelector(
-    (state) => state.newProduct
+    (state) => state.product
   );
 
   const [name, setName] = useState("");

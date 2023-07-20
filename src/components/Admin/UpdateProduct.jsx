@@ -8,11 +8,6 @@ import {
   Spellcheck,
   Storage,
 } from "@mui/icons-material";
-// import {
-//   clearErrors,
-//   getProductDetails,
-//   updateProduct,
-// } from "../../actions/productAction";
 import { Sidebar } from "./Sidebar";
 import "./NewProduct.css";
 import { useNavigate, useParams } from "react-router-dom";
@@ -20,11 +15,11 @@ import { Button } from "@mui/material";
 import {
   clear_errors,
   updateProductReset,
-} from "../../featured/slices/UpdateProductSlice";
+} from "../../featured/slices/productSlice";
 import {
   productDetailsReset,
   clear_errors as productDetails_clear_error,
-} from "../../featured/slices/productDetailsSlices";
+} from "../../featured/slices/productDetailsSlice";
 import {
   getProductDetails,
   updateProduct,
@@ -51,7 +46,7 @@ export const UpdateProduct = () => {
     loading,
     productUpdated,
     error: updateError,
-  } = useSelector((state) => state.updateProduct);
+  } = useSelector((state) => state.product);
 
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -65,10 +60,9 @@ export const UpdateProduct = () => {
   useEffect(() => {
     if (!product || product === {}) {
       dispatch(getProductDetails(id));
-    } else if(product && product._id !== id){
+    } else if (product && product._id !== id) {
       dispatch(getProductDetails(id));
-    }
-     else {
+    } else {
       setName(product?.name || "");
       setPrice(product?.price || 0);
       setDescription(product?.description || "");
