@@ -19,21 +19,38 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
 import { logout } from "../../../featured/actions/userActions";
 
 export const Header = () => {
-  const options = [
-    { text: "Home", icon: <Home />, link: "/" },
-    { text: "Products", icon: <AddBusiness />, link: "/products" },
-    { text: "Cart", icon: <ShoppingCart />, link: "/cart" },
-    { text: "Orders", icon: <ListAlt />, link: "/orders" },
-    { text: "Profile", icon: <AccountBox />, link: "/account" },
-    { text: "About", icon: <HelpCenter />, link: "/about" },
-    { text: "Contact", icon: <Email />, link: "/contact" },
-    { text: "Logout", icon: <Logout />, link: "/login", func: logoutUser },
-  ];
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  let options = [];
+
+  if (isAuthenticated) {
+    options = [
+      { text: "Home", icon: <Home />, link: "/" },
+      { text: "Products", icon: <AddBusiness />, link: "/products" },
+      { text: "Cart", icon: <ShoppingCart />, link: "/cart" },
+      { text: "Orders", icon: <ListAlt />, link: "/orders" },
+      { text: "Profile", icon: <AccountBox />, link: "/account" },
+      { text: "About", icon: <HelpCenter />, link: "/about" },
+      { text: "Contact", icon: <Email />, link: "/contact" },
+      { text: "Logout", icon: <Logout />, link: "/login", func: logoutUser },
+    ];
+  } else {
+    options = [
+      { text: "Home", icon: <Home />, link: "/" },
+      { text: "Products", icon: <AddBusiness />, link: "/products" },
+      { text: "Cart", icon: <ShoppingCart />, link: "/cart" },
+      // { text: "Orders", icon: <ListAlt />, link: "/orders" },
+      // { text: "Profile", icon: <AccountBox />, link: "/account" },
+      { text: "About", icon: <HelpCenter />, link: "/about" },
+      { text: "Contact", icon: <Email />, link: "/contact" },
+      { text: "Login", icon: <Logout />, link: "/login" },
+    ];
+  }
 
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();

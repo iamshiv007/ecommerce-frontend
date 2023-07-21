@@ -27,10 +27,6 @@ export const Home = () => {
         }
         dispatch(getAllProducts())
 
-        if (!isAuthenticated) {
-            alert("PLease login to access all resources")
-        }
-
         // eslint-disable-next-line
     }, [dispatch, isAuthenticated]);
 

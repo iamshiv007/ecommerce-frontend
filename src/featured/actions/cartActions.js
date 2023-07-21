@@ -32,7 +32,6 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
     );
   } catch (error) {
     addToCartFailed(error);
-    console.log(error);
   }
 };
 

@@ -24,7 +24,6 @@ export const getAllProducts = (keyword = '', currentPage = 1, price = [0, 100000
         dispatch(allProductsSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(AllProductsFailed(error?.response?.data.message))
     }
 }
@@ -37,7 +36,6 @@ export const getAdminProducts = () => async (dispatch) => {
         dispatch(adminProductsSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(adminProductsFailed(error?.response?.data.message))
     }
 }
@@ -51,7 +49,6 @@ export const getProductDetails = (id) => async (dispatch) => {
         dispatch(productDetailsSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(productDetailsFailed(error?.response?.data.message))
     }
 }
@@ -65,7 +62,6 @@ export const newReview = (reviewData) => async (dispatch) => {
         dispatch(newReviewSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(newReviewFailed(error?.response?.data.message))
     }
 }
@@ -81,8 +77,7 @@ export const newProduct = (productData) => async (dispatch) => {
         dispatch(newProductSuccess(data))
 
     } catch (error) {
-        dispatch(newProductFailed())
-        console.log(error)
+        dispatch(newProductFailed(error?.response?.data.message))
     }
 }
 
@@ -97,8 +92,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
         dispatch(updateProductSuccess(data))
 
     } catch (error) {
-        dispatch(updateProductFailed())
-        console.log(error)
+        dispatch(updateProductFailed(error?.response?.data.message))
     }
 }
 
@@ -114,8 +108,7 @@ export const deleteProduct = (id) => async (dispatch) => {
         dispatch(deleteProductSuccess(data))
 
     } catch (error) {
-        dispatch(deleteProductFailed())
-        console.log(error)
+        dispatch(deleteProductFailed(error?.response?.data.message))
     }
 }
 
@@ -127,7 +120,6 @@ export const getAllReviews = (id) => async (dispatch) => {
         const { data } = await axios.get(`${port}/api/reviews?id=${id}`)
         dispatch(allReviewsSuccess(data))
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(allReviewsFailed(error?.response?.data.message))
     }
 }
@@ -145,8 +137,7 @@ export const deleteReview = (reviewId, productId) => async (dispatch) => {
 
     } catch (error) {
 
-        dispatch(deleteReviewFailed())
-        console.log(error)
-
+        dispatch(deleteReviewFailed(error?.response?.data.message)
+        )
     }
 }

@@ -78,7 +78,7 @@ export const MyOrders = () => {
     }
 
     dispatch(getMyOrders());
-  }, [dispatch, alert, error]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>

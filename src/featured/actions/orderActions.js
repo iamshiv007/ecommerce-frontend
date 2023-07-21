@@ -14,7 +14,6 @@ export const getAllOrders = () => async (dispatch) => {
         dispatch(allOrdersSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(AllOrdersFailed(error?.response?.data.message))
     }
 }
@@ -28,7 +27,6 @@ export const getMyOrders = () => async (dispatch) => {
         dispatch(myOrdersSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(myOrdersFailed(error?.response?.data.message))
     }
 }
@@ -44,8 +42,7 @@ export const newOrder = (orderData) => async (dispatch) => {
         dispatch(newOrderSuccess(data))
 
     } catch (error) {
-        dispatch(newOrderFailed())
-        console.log(error)
+        dispatch(newOrderFailed(error?.response?.data.message))
     }
 }
 
@@ -60,8 +57,7 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
         dispatch(updateOrderSuccess(data))
 
     } catch (error) {
-        dispatch(updateOrderFailed())
-        console.log(error)
+        dispatch(updateOrderFailed(error?.response?.data.message))
     }
 }
 
@@ -77,8 +73,7 @@ export const deleteOrder = (id) => async (dispatch) => {
         dispatch(deleteOrderSuccess(data))
 
     } catch (error) {
-        dispatch(deleteOrderFailed())
-        console.log(error)
+        dispatch(deleteOrderFailed(error?.response?.data.message))
     }
 }
 
@@ -91,7 +86,6 @@ export const getOrderDetails = (id) => async (dispatch) => {
         dispatch(orderDetailsSuccess(data))
 
     } catch (error) {
-        alert(error?.response?.data.message)
         dispatch(orderDetailsFailed(error?.response?.data.message))
     }
 }

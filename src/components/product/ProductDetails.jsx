@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { MetaData } from "../layout/MetaData";
 import Carousel from "react-material-ui-carousel";
 import { ReviewCard } from "./ReviewCard";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import "./ProductDetails.css";
 import {
   Button,
@@ -36,7 +36,7 @@ export const ProductDetails = () => {
     (state) => state.review
   );
 
-  const { error: userError, user } = useSelector((state) => state.user);
+  const { error: userError } = useSelector((state) => state.user);
 
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
@@ -106,19 +106,6 @@ export const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          {userError || !user ? (
-            <Link to="/login">
-              <Button
-                variant="contained"
-                color="primary"
-                style={{ position: "fixed", top: "2%", right: "2%" }}
-              >
-                LogIn
-              </Button>
-            </Link>
-          ) : (
-            ""
-          )}
           <MetaData title={`${product?.name} -- ECOMMEREC`} />
           <div className="productDetails">
             <div>
