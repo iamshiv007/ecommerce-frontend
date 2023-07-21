@@ -23,9 +23,9 @@ const orderSlice = createSlice({
         deleteOrderFailed: (state, action) => ({ ...state, loading: false, error: action.payload }),
         updateOrderFailed: (state, action) => ({ ...state, loading: false, error: action.payload, }),
 
-        newOrderReset: (state) => ({ ...state, userDeleted: false }),
-        deleteOrderReset: (state) => ({ ...state, userDeleted: false }),
-        updateOrderReset: (state) => ({ ...state, userUpdated: false }),
+        newOrderReset: (state) => ({ ...state, orderDeleted: false }),
+        deleteOrderReset: (state) => ({ ...state, orderDeleted: false }),
+        updateOrderReset: (state) => ({ ...state, orderUpdated: false }),
 
         clear_errors: (state) => ({ ...state, error: null }),
     }

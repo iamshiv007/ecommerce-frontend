@@ -30,6 +30,8 @@ import { OrderSuccess } from './components/cart/OrderSuccess';
 import ProtectedRoute from './components/route/ProtectedRoute';
 import { MyOrders } from './components/order/MyOrders';
 import { OrderDetails } from './components/order/OrderDetails';
+import { OrderList } from './components/Admin/OrderList';
+import { ProcessOrder } from './components/Admin/ProcessOrder';
 
 function App() {
   const dispatch = useDispatch()
@@ -71,6 +73,8 @@ function App() {
         <ProtectedRoute isAdmin={true} exact element={<UpdateProduct />} path='/admin/product/:id' />
         <ProtectedRoute isAdmin={true} exact element={<UpdateUser />} path='/admin/user/:id' />
         <ProtectedRoute isAdmin={true} exact element={<UserList />} path='/admin/users' />
+        <ProtectedRoute isAdmin={true} exact element={<OrderList />} path='/admin/orders' />
+        <ProtectedRoute isAdmin={true} exact element={<ProcessOrder />} path='/admin/order/:id' />
 
         <ProtectedRoute exact element={<PaymentWrapper />} path='/process/payment' />
 
