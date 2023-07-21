@@ -27,7 +27,6 @@ import { ConfirmOrder } from './components/cart/ConfirmOrder';
 import PaymentWrapper from './components/cart/PaymentWrapper';
 import { UserOptions } from './components/layout/header/UserOptions';
 import { OrderSuccess } from './components/cart/OrderSuccess';
-import ProtectedRoute from './components/route/ProtectedRoute';
 import { MyOrders } from './components/order/MyOrders';
 import { OrderDetails } from './components/order/OrderDetails';
 import { OrderList } from './components/Admin/OrderList';
@@ -36,6 +35,7 @@ import { UpdatePassword } from './components/user/updatePassword';
 import { UpdateProfile } from './components/user/UpdateProfile';
 import { ForgotPassword } from './components/user/ForgotPassword';
 import { ResetPassword } from './components/user/ResetPassword';
+import { ProtectedRoute } from './components/route/ProtectedRoute'
 
 function App() {
   const dispatch = useDispatch()
@@ -53,38 +53,38 @@ function App() {
 
       <Routes>
 
-        <Route exact element={<Home />} path='/' />
-        <Route exact element={<Products />} path='/products' />
-        <Route exact element={<ProductDetails />} path='/product/:id' />
-        <Route exact element={<Products />} path='/products/:keyword' />
-        <Route exact element={<Cart />} path='/cart' />
-        <Route exact element={<About />} path='/about' />
-        <Route exact element={<Contact />} path='/contact' />
-        <Route exact element={<Search />} path='/search' />
-        <Route exact element={<ForgotPassword />} path='/password/forgot' />
-        <Route exact element={<ResetPassword />} path='/password/reset/:token' />
+        <Route element={<Home />} path='/' />
+        <Route element={<Products />} path='/products' />
+        <Route element={<ProductDetails />} path='/product/:id' />
+        <Route element={<Products />} path='/products/:keyword' />
+        <Route element={<Cart />} path='/cart' />
+        <Route element={<About />} path='/about' />
+        <Route element={<Contact />} path='/contact' />
+        <Route element={<Search />} path='/search' />
+        <Route element={<ForgotPassword />} path='/password/forgot' />
+        <Route element={<ResetPassword />} path='/password/reset/:token' />
 
-        <ProtectedRoute exact element={<LogInSignUp />} path='/login' />
-        <ProtectedRoute exact element={<Profile />} path='/account' />
-        <ProtectedRoute exact element={<Shipping />} path='/shipping' />
-        <ProtectedRoute exact element={<ConfirmOrder />} path='/order/confirm' />
-        <ProtectedRoute exact element={<OrderSuccess />} path='/success' />
-        <ProtectedRoute exact element={<MyOrders />} path='/orders' />
-        <ProtectedRoute exact element={<OrderDetails />} path='/order/:id' />
-        <ProtectedRoute exact element={<UpdatePassword />} path='/password/update' />
-        <ProtectedRoute exact element={<UpdateProfile />} path='/me/update' />
+        <Route element={<LogInSignUp />} path='/login' />
+        <ProtectedRoute element={<ProtectedRoute component={<Profile />} />} path='/account' />
+        <ProtectedRoute element={<ProtectedRoute component={<Shipping />} />} path='/shipping' />
+        <ProtectedRoute element={<ProtectedRoute component={<ConfirmOrder />} />} path='/order/confirm' />
+        <ProtectedRoute element={<ProtectedRoute component={<OrderSuccess />} />} path='/success' />
+        <ProtectedRoute element={<ProtectedRoute component={<MyOrders />} />} path='/orders' />
+        <ProtectedRoute element={<ProtectedRoute component={<OrderDetails />} />} path='/order/:id' />
+        <ProtectedRoute element={<ProtectedRoute component={<UpdatePassword />} />} path='/password/update' />
+        <ProtectedRoute element={<ProtectedRoute component={<UpdateProfile />} />} path='/me/update' />
 
-        <ProtectedRoute isAdmin={true} exact element={<Dashboard />} path='/admin/dashboard' />
-        <ProtectedRoute isAdmin={true} exact element={<NewProduct />} path='/admin/product' />
-        <ProtectedRoute isAdmin={true} exact element={<ProductList />} path='/admin/products' />
-        <ProtectedRoute isAdmin={true} exact element={<ProductReviews />} path='/admin/reviews' />
-        <ProtectedRoute isAdmin={true} exact element={<UpdateProduct />} path='/admin/product/:id' />
-        <ProtectedRoute isAdmin={true} exact element={<UpdateUser />} path='/admin/user/:id' />
-        <ProtectedRoute isAdmin={true} exact element={<UserList />} path='/admin/users' />
-        <ProtectedRoute isAdmin={true} exact element={<OrderList />} path='/admin/orders' />
-        <ProtectedRoute isAdmin={true} exact element={<ProcessOrder />} path='/admin/order/:id' />
+        <ProtectedRoute element={<ProtectedRoute component={<Dashboard />} isAdmin={true} />} path='/admin/dashboard' />
+        <ProtectedRoute element={<ProtectedRoute component={<NewProduct />} isAdmin={true} />} path='/admin/product' />
+        <ProtectedRoute element={<ProtectedRoute component={<ProductList />} isAdmin={true} />} path='/admin/products' />
+        <ProtectedRoute element={<ProtectedRoute component={<ProductReviews />} isAdmin={true} />} path='/admin/reviews' />
+        <ProtectedRoute element={<ProtectedRoute component={<UpdateProduct />} isAdmin={true} />} path='/admin/product/:id' />
+        <ProtectedRoute element={<ProtectedRoute component={<UpdateUser />} isAdmin={true} />} path='/admin/user/:id' />
+        <ProtectedRoute element={<ProtectedRoute component={<UserList />} isAdmin={true} />} path='/admin/users' />
+        <ProtectedRoute element={<ProtectedRoute component={<OrderList />} isAdmin={true} />} path='/admin/orders' />
+        <ProtectedRoute element={<ProtectedRoute component={<ProcessOrder />} isAdmin={true} />} path='/admin/order/:id' />
 
-        <ProtectedRoute exact element={<PaymentWrapper />} path='/process/payment' />
+        <ProtectedRoute element={<ProtectedRoute component={<PaymentWrapper />} />} path='/process/payment' />
 
         <Route element={<NotFound />} path='*' />
       </Routes>
