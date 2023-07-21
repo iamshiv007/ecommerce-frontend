@@ -34,6 +34,8 @@ import { OrderList } from './components/Admin/OrderList';
 import { ProcessOrder } from './components/Admin/ProcessOrder';
 import { UpdatePassword } from './components/user/updatePassword';
 import { UpdateProfile } from './components/user/UpdateProfile';
+import { ForgotPassword } from './components/user/ForgotPassword';
+import { ResetPassword } from './components/user/ResetPassword';
 
 function App() {
   const dispatch = useDispatch()
@@ -59,6 +61,8 @@ function App() {
         <Route exact element={<About />} path='/about' />
         <Route exact element={<Contact />} path='/contact' />
         <Route exact element={<Search />} path='/search' />
+        <Route exact element={<ForgotPassword />} path='/password/forgot' />
+        <Route exact element={<ResetPassword />} path='/password/reset/:token' />
 
         <ProtectedRoute exact element={<LogInSignUp />} path='/login' />
         <ProtectedRoute exact element={<Profile />} path='/account' />
