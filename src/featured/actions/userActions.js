@@ -1,7 +1,7 @@
 import axios from "axios"
 import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutRequest, logoutSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/authSlice";
 import { allUsersFailed, allUsersRequest, allUsersSuccess } from "../slices/usersSlice";
-import { updateUserFailed, updateUserRequest, updateUserSuccess, deleteUserFailed, deleteUserRequest, deleteUserSuccess } from "../slices/userSlice";
+import { updateUserFailed, updateUserRequest, updateUserSuccess, deleteUserFailed, deleteUserRequest, deleteUserSuccess, updatePasswordSuccess, updatePasswordFailed, updatePasswordRequest } from "../slices/userSlice";
 import { getUserFailed, getUserRequest, getUserSuccess } from "../slices/getUserSlice";
 
 const port = process.env.REACT_APP_BACKEND_URL
@@ -112,5 +112,19 @@ export const getUser = (id) => async (dispatch) => {
     } catch (error) {
         alert(error?.response?.data.message)
         dispatch(getUserFailed(error?.response?.data.message))
+    }
+}
+
+// 9. Update Password
+export const updatePassword = (formData) => async (dispatch) => {
+    dispatch(updatePasswordRequest())
+    try {
+        // Make API request for load user
+        const { data } = await axios.put(`${port}/api/password/update`, formData)
+        dispatch(updatePasswordSuccess(data))
+
+    } catch (error) {
+        alert(error?.response?.data.message)
+        dispatch(updatePasswordFailed(error?.response?.data.message))
     }
 }
