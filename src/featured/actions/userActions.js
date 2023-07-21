@@ -1,7 +1,7 @@
 import axios from "axios"
 import { loginFailed, loginStart, loginSuccess, logoutFailed, logoutRequest, logoutSuccess, signupFailed, signupStart, signupSuccess, userLoadFailed, userLoadStart, userLoadSuccess } from "../slices/authSlice";
 import { allUsersFailed, allUsersRequest, allUsersSuccess } from "../slices/usersSlice";
-import { updateUserFailed, updateUserRequest, updateUserSuccess, deleteUserFailed, deleteUserRequest, deleteUserSuccess, updatePasswordSuccess, updatePasswordFailed, updatePasswordRequest } from "../slices/userSlice";
+import { updateUserFailed, updateUserRequest, updateUserSuccess, deleteUserFailed, deleteUserRequest, deleteUserSuccess, updatePasswordSuccess, updatePasswordFailed, updatePasswordRequest, updateProfileRequest, updateProfileSuccess, updateProfileFailed } from "../slices/userSlice";
 import { getUserFailed, getUserRequest, getUserSuccess } from "../slices/getUserSlice";
 
 const port = process.env.REACT_APP_BACKEND_URL
@@ -126,5 +126,20 @@ export const updatePassword = (formData) => async (dispatch) => {
     } catch (error) {
         alert(error?.response?.data.message)
         dispatch(updatePasswordFailed(error?.response?.data.message))
+    }
+}
+
+// 10. Update Profile
+export const updateProfile = (userData) => async (dispatch) => {
+    dispatch(updateProfileRequest())
+    try {
+        const config = { headers: { "Content-Type": "multipart/form-data" } }
+
+        // Make API request for load user
+        const { data } = await axios.put(`${port}/api/me/update`, userData, config)
+        dispatch(updateProfileSuccess(data))
+    } catch (error) {
+        alert(error?.response?.data.message)
+        dispatch(updateProfileFailed(error?.response?.data.message))
     }
 }
